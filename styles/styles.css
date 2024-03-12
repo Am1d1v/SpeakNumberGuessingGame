@@ -40,7 +40,6 @@ p {
 
 .box {
   border: 2px solid #dedede;
-  border-radius: 50%;
   display: inline-block;
   font-size: 35px;
   margin: 20px;
