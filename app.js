@@ -12,6 +12,7 @@ function getRandomNumber(){
     // Capture user speak
 function onSpeak(e){
     const msg = e.results[0][0].transcript;
+    console.log(msg);
 
     // Write out what we speak
     writeMessage(msg);
@@ -27,7 +28,28 @@ function checkNumber(msg){
 
     // Check if valid number
     if(Number.isNaN(num)){
-        msgEl.innerHTML = '<div>That is not a valid number</div>'
+        msgEl.innerHTML = '<div>That is not a valid number</div>';
+        return;
+    }
+
+    // Check in range
+    if(num > 100 || num < 1){
+        msgEl.innerHTML += '<div>Number must be between 1 and 100</div>';
+        return;
+    }
+
+    // Check Number
+    if(num === randomNum){
+        document.body.innerHTML = `
+        <h2>Congrats! You have guessed the number<h2>
+        <br>
+        It was ${num}
+        <button class="play-again" id="play-again"> Play Again </button>
+        `
+    } else if(num > randomNum){
+        msgEl.innerHTML += `<div>Number must be lower</div>`;
+    } else {
+        msgEl.innerHTML += `<div>Number must be higher</div>`;
     }
 }    
 
