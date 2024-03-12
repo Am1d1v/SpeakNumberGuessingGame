@@ -3,7 +3,7 @@
 
 const msgEl = document.querySelector('#msg');
 const randomNum = getRandomNumber();
-
+console.log(randomNum);
     // Generate random number
 function getRandomNumber(){
     return Math.floor(Math.random() * 100) + 1;
@@ -20,8 +20,6 @@ function onSpeak(e){
     // Check that input data is a number
     checkNumber(msg)
 
-    const result = getRandomNumber();
-    console.log(result);
 }    
 
     // Check message againts number
@@ -76,4 +74,12 @@ recognition.start();
 recognition.addEventListener('result', onSpeak);
 
     // End SR Service
-recognition.addEventListener('end', () => recognition.start());    
+recognition.addEventListener('end', () => recognition.start());   
+
+    // Paly Again
+document.body.addEventListener('click', (e) => {
+    if(e.target.id === 'play-again'){
+        window.location.reload();
+    }
+    
+})    
