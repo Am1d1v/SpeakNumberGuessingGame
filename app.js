@@ -19,6 +19,9 @@ function onSpeak(e){
 
     // Check that input data is a number
     checkNumber(msg)
+
+    const result = getRandomNumber();
+    console.log(result);
 }    
 
     // Check message againts number
@@ -70,4 +73,7 @@ let recognition = new window.SpeechRecognition();
 recognition.start();
 
     // Speak Result
-    recognition.addEventListener('result', onSpeak)
+recognition.addEventListener('result', onSpeak);
+
+    // End SR Service
+recognition.addEventListener('end', () => recognition.start());    
